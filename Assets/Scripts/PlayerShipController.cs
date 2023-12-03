@@ -6,21 +6,27 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private float throttlePower;
     [SerializeField] private bool _isThrottleVertical;
 
+    private Transform _transform;
     private Rigidbody _rigidbody;
     [SerializeField] private float _throttle;
+    [SerializeField] private Vector2 _steering;
+    [SerializeField] private float maxAngularVelocity;
 
     private const float THROTTLE_MULTIPLIER = 1000000;
 
     private void Awake()
     {
+        _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.maxAngularVelocity = maxAngularVelocity;
     }
 
     private void FixedUpdate()
     {
-        var direction = _isThrottleVertical ? transform.up : transform.forward;
+        var direction = _isThrottleVertical ? _transform.up : _transform.forward;
         _rigidbody.AddForce(direction * (Mathf.Pow(_throttle, 2) * throttlePower * THROTTLE_MULTIPLIER));
-        Debug.Log(_rigidbody.velocity.magnitude);
+        _rigidbody.AddTorque(_transform.forward * _steering.x, ForceMode.Acceleration);
+        _rigidbody.AddTorque(_transform.right * _steering.y, ForceMode.Acceleration);
     }
 
     public void SetThrottle(XRJoystick throttleControl)
@@ -31,5 +37,10 @@ public class PlayerShipController : MonoBehaviour
     public void SetThrottleVertical()
     {
         _isThrottleVertical = !_isThrottleVertical;
+    }
+
+    public void SetSteering(XRJoystick joystick)
+    {
+        _steering = joystick.value;
     }
 }
