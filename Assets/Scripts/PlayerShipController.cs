@@ -27,4 +27,9 @@ public class PlayerShipController : MonoBehaviour
     {
         _throttle = throttleControl.value.y + 1;
     }
+
+    public void SetThrottleVertical()
+    {
+        _isThrottleVertical = !_isThrottleVertical;
+    }
 }
