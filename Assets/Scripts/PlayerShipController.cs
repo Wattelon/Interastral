@@ -25,7 +25,7 @@ public class PlayerShipController : MonoBehaviour
     {
         var direction = _isThrottleVertical ? _transform.up : _transform.forward;
         _rigidbody.AddForce(direction * (Mathf.Pow(_throttle, 2) * throttlePower * THROTTLE_MULTIPLIER));
-        _rigidbody.AddTorque(_transform.forward * _steering.x, ForceMode.Acceleration);
+        _rigidbody.AddTorque(_transform.forward * -_steering.x, ForceMode.Acceleration);
         _rigidbody.AddTorque(_transform.right * _steering.y, ForceMode.Acceleration);
     }
 

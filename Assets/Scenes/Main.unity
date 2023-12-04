@@ -2450,6 +2450,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2caef90766519c4bb73e0b155b25dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &257482934
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257482924}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!43 &300288078
 Mesh:
   m_ObjectHideFlags: 0
@@ -3605,6 +3632,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &535091413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1184419595632255925, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
+  m_PrefabInstance: {fileID: 6434788956657820384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &535091418
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535091413}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!43 &562392807
 Mesh:
   m_ObjectHideFlags: 0
@@ -9850,6 +9909,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1554638424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1183349475923277413, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
+  m_PrefabInstance: {fileID: 6434788956657820384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1554638429
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554638424}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1 &1557147544
 GameObject:
   m_ObjectHideFlags: 0
@@ -13612,7 +13703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2232363456760178337, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -502
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: 2232363456760178337, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13689,6 +13780,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1182613118963180881, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 257482929}
+    - targetCorrespondingSourceObject: {fileID: 1182613118963180881, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 257482934}
+    - targetCorrespondingSourceObject: {fileID: 1184419595632255925, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 535091418}
+    - targetCorrespondingSourceObject: {fileID: 1183349475923277413, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1554638429}
   m_SourcePrefab: {fileID: 100100000, guid: f0e2eb5ea69914c40a48f782e4e69eea, type: 3}
 --- !u!1001 &8423787320192895789
 PrefabInstance:
