@@ -575,6 +575,8 @@ GameObject:
   - component: {fileID: 1161114082809318331}
   - component: {fileID: 1170413189799133289}
   - component: {fileID: 3575514736821296109}
+  - component: {fileID: 8231301128874277909}
+  - component: {fileID: 3338716763909078252}
   m_Layer: 0
   m_Name: CockpitEquipments_Joystick2-Handle
   m_TagString: Untagged
@@ -662,7 +664,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -670,6 +672,45 @@ CapsuleCollider:
   m_Height: 0.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.1, z: 0.02}
+--- !u!54 &8231301128874277909
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182613118963180881}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!114 &3338716763909078252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182613118963180881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2caef90766519c4bb73e0b155b25dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1183332553662038517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1048,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3338716763909078252}
+        m_TargetAssemblyTypeName: RotationReset, Assembly-CSharp
+        m_MethodName: ResetY
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -1060,7 +1113,7 @@ MonoBehaviour:
   m_Handle: {fileID: 1187440029357693701}
   m_Value: {x: 0, y: 0}
   m_RecenterOnRelease: 1
-  m_MaxAngle: 40
+  m_MaxAngle: 30
   m_DeadZoneAngle: 5
   m_OnValueChangeX:
     m_PersistentCalls:
@@ -1105,7 +1158,6 @@ GameObject:
   - component: {fileID: 1187748042887325975}
   - component: {fileID: 1161763757987429521}
   - component: {fileID: 1169639445717810165}
-  - component: {fileID: 1263667877762215670}
   m_Layer: 0
   m_Name: CockpitEquipments_ThrottleControl1-Handle1
   m_TagString: Untagged
@@ -1178,28 +1230,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1263667877762215670
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183349475923277413}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300040, guid: 660686678d5f55947881d7fe1a8292c1, type: 3}
 --- !u!1 &1183370532380998999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,8 +2345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 7244115041335393800}
-  - {fileID: 1263667877762215670}
+  - {fileID: 5600787766589768058}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2356,7 +2385,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4345883734681168083}
+        m_TargetAssemblyTypeName: RotationReset, Assembly-CSharp
+        m_MethodName: ResetYZ
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -4861,7 +4902,9 @@ GameObject:
   - component: {fileID: 1187660923468495119}
   - component: {fileID: 1161206611530769691}
   - component: {fileID: 1168814644811913173}
-  - component: {fileID: 7244115041335393800}
+  - component: {fileID: 5600787766589768058}
+  - component: {fileID: 8326266426831471602}
+  - component: {fileID: 4345883734681168083}
   m_Layer: 0
   m_Name: CockpitEquipments_ThrottleControl1-Handle2
   m_TagString: Untagged
@@ -4935,8 +4978,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7244115041335393800
-MeshCollider:
+--- !u!65 &5600787766589768058
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4950,13 +4993,51 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300044, guid: 660686678d5f55947881d7fe1a8292c1, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.19, y: 0.13, z: 0.11}
+  m_Center: {x: 0.045, y: 0.1, z: 0.03}
+--- !u!54 &8326266426831471602
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184419595632255925}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!114 &4345883734681168083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184419595632255925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2caef90766519c4bb73e0b155b25dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184426899820919425
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,7 +5749,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 100000
   m_Drag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: -2}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5719,9 +5800,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throttlePower: 5
-  _isThrottleVertical: 1
+  _isThrottleVertical: 0
   _throttle: 0
   _steering: {x: 0, y: 0}
+  maxAngularVelocity: 1.5
 --- !u!1 &6448066768464285861
 GameObject:
   m_ObjectHideFlags: 0
@@ -6535,6 +6617,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7429161884000736486}
     m_Modifications:
+    - target: {fileID: 664489801923019586, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
+      propertyPath: m_PhysicsTriggerInteraction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6059725000919627127, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
       propertyPath: m_Radius
       value: 0.07
@@ -6799,6 +6885,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8489676224425258755}
     m_Modifications:
+    - target: {fileID: 664489801923019586, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
+      propertyPath: m_PhysicsTriggerInteraction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6059725000919627127, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
       propertyPath: m_Radius
       value: 0.07
