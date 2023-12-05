@@ -4,13 +4,14 @@ using UnityEngine.XR.Content.Interaction;
 public class PlayerShipController : MonoBehaviour
 {
     [SerializeField] private float throttlePower;
-    [SerializeField] private bool _isThrottleVertical;
+    [SerializeField] private float maxLinearVelocity;
+    [SerializeField] private float maxAngularVelocity;
 
     private Transform _transform;
     private Rigidbody _rigidbody;
-    [SerializeField] private float _throttle;
     [SerializeField] private Vector2 _steering;
-    [SerializeField] private float maxAngularVelocity;
+    [SerializeField] private float _throttle;
+    [SerializeField] private bool _isThrottleVertical;
 
     private const float THROTTLE_MULTIPLIER = 1000000;
 
@@ -19,6 +20,7 @@ public class PlayerShipController : MonoBehaviour
         _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.maxAngularVelocity = maxAngularVelocity;
+        _rigidbody.maxLinearVelocity = maxLinearVelocity;
     }
 
     private void FixedUpdate()
@@ -27,6 +29,7 @@ public class PlayerShipController : MonoBehaviour
         _rigidbody.AddForce(direction * (Mathf.Pow(_throttle, 2) * throttlePower * THROTTLE_MULTIPLIER));
         _rigidbody.AddTorque(_transform.forward * -_steering.x, ForceMode.Acceleration);
         _rigidbody.AddTorque(_transform.right * _steering.y, ForceMode.Acceleration);
+        //Debug.Log(_rigidbody.angularVelocity + "\n" + _rigidbody.angularVelocity.magnitude);
     }
 
     public void SetThrottle(XRJoystick throttleControl)
