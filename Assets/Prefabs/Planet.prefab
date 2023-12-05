@@ -1491,7 +1491,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1521,6 +1521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   density: 500
+  torque: 1
 --- !u!1 &1306658796795597412
 GameObject:
   m_ObjectHideFlags: 0

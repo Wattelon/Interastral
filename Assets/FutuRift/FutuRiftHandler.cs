@@ -38,8 +38,8 @@ namespace Futurift
             pitch -= clampedAngularVelocity.x;
             roll -= clampedAngularVelocity.z;
 
-            _futuRiftController.Pitch = Mathf.Clamp(pitch, -30, 30);
-            _futuRiftController.Roll = Mathf.Clamp(roll, -30, 30);
+            _futuRiftController.Pitch = Mathf.Clamp(pitch, -25, 25);
+            _futuRiftController.Roll = Mathf.Clamp(roll, -25, 25);
         }
     
         private void OnEnable()

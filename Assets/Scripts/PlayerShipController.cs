@@ -29,7 +29,6 @@ public class PlayerShipController : MonoBehaviour
         _rigidbody.AddForce(direction * (Mathf.Pow(_throttle, 2) * throttlePower * THROTTLE_MULTIPLIER));
         _rigidbody.AddTorque(_transform.forward * -_steering.x, ForceMode.Acceleration);
         _rigidbody.AddTorque(_transform.right * _steering.y, ForceMode.Acceleration);
-        //Debug.Log(_rigidbody.angularVelocity + "\n" + _rigidbody.angularVelocity.magnitude);
     }
 
     public void SetThrottle(XRJoystick throttleControl)
