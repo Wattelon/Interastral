@@ -4,6 +4,7 @@ public class Planet : MonoBehaviour
 {
     [SerializeField] private float density;
     [SerializeField] private float torque;
+    [SerializeField] private bool isTorqueRandom;
 
     private Rigidbody _rigidbody;
     private float _mass;
@@ -19,6 +20,10 @@ public class Planet : MonoBehaviour
         _radius = transform.lossyScale.x;
         _mass = Mathf.Pow(_radius, 3) * Mathf.PI * 4 / 3 * density;
         _rigidbody.mass = _mass;
+        if (isTorqueRandom)
+        {
+            torque = Random.Range(-torque, torque);
+        }
     }
 
     private void FixedUpdate()
