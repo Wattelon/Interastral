@@ -6,10 +6,10 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float maxLinearVelocity;
     [SerializeField] private float maxAngularVelocity;
 
-    private Transform _transform;
-    private Rigidbody _rigidbody;
+    private protected Transform _transform;
+    private protected Rigidbody _rigidbody;
     private float _throttlePower;
-    private float _steeringPower;
+    private protected float _steeringPower;
     private float _maxHealth;
     private float _curHealth;
     private float _maxShields;

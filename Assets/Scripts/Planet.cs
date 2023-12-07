@@ -54,7 +54,7 @@ public class Planet : MonoBehaviour
             }
             else
             {
-                var torqueDirection = Vector3.Angle(other.transform.forward, pullDirection) <= 120 ?
+                var torqueDirection = Vector3.Angle(other.transform.forward, pullDirection) <= 150 ?
                     Vector3.Cross(other.transform.forward, pullDirection) :
                     Vector3.Cross(pullDirection, other.transform.forward);
                 collision.AddTorque(torqueDirection * (torqueDirection.sqrMagnitude * force / 20));
