@@ -29,7 +29,6 @@ public class Planet : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.AddTorque(transform.up * (_mass * torque));
-        Debug.Log(_rigidbody.angularVelocity);
     }
 
     private void OnTriggerStay(Collider other)
@@ -55,7 +54,7 @@ public class Planet : MonoBehaviour
             }
             else
             {
-                var torqueDirection = Vector3.Angle(other.transform.forward, pullDirection) <= 100 ?
+                var torqueDirection = Vector3.Angle(other.transform.forward, pullDirection) <= 120 ?
                     Vector3.Cross(other.transform.forward, pullDirection) :
                     Vector3.Cross(pullDirection, other.transform.forward);
                 collision.AddTorque(torqueDirection * (torqueDirection.sqrMagnitude * force / 20));
