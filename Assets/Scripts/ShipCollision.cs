@@ -16,7 +16,6 @@ public class ShipCollision : MonoBehaviour
     {
         if (LayerMaskUnpack.IsLayerInMask(other.gameObject.layer, collisionLayer) && other.relativeVelocity.sqrMagnitude >= Mathf.Pow(collisionVelocityThreshold, 2))
         {
-            Debug.Log(other.relativeVelocity.magnitude);
             _ship.CurHealth -= other.relativeVelocity.sqrMagnitude / 100;
         }
     }

@@ -16,3 +16,5 @@ MonoBehaviour:
   maxShields: 100
   throttlePower: 5
   steeringPower: 1
+  laserDamage: 0.1
+  missileDamage: 0

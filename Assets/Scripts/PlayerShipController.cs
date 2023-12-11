@@ -16,4 +16,9 @@ public class PlayerShipController : ShipController
     {
         _steering = joystick.value;
     }
+
+    public void TriggerShoot(bool toggle)
+    {
+        Shoot(toggle);
+    }
 }
