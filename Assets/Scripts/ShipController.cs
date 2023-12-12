@@ -7,7 +7,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] private ShipStatsSO statsSO;
     [SerializeField] private float maxLinearVelocity;
     [SerializeField] private float maxAngularVelocity;
-    [SerializeField] private List<Transform> blasters;
+    [SerializeField] private protected List<Transform> blasters;
     [SerializeField] private LayerMask hitMask;
 
     private protected Transform _transform;
@@ -108,7 +108,7 @@ public class ShipController : MonoBehaviour
         {
             foreach (var blaster in _blasters)
             {
-                if (Physics.Raycast(blaster.Transform.position, blaster.Transform.forward, out _laserHit, hitMask))
+                if (Physics.Raycast(blaster.Transform.position, blaster.Transform.forward, out _laserHit, Mathf.Infinity, hitMask))
                 {
                     blaster.LineRenderer.SetPosition(1, Vector3.forward * _laserHit.distance);
                     _laserHit.transform.GetComponent<ShipController>().Damage(_laserDamage, false, 0.5f);

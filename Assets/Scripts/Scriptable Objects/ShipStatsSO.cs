@@ -3,14 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Object/Ship Stats", fileName = "New Stats", order = 51)]
 public class ShipStatsSO : ScriptableObject
 {
-    [SerializeField] private float maxDurability;
-    [SerializeField] private float maxShield;
-    [SerializeField] private float throttlePower;
-    [SerializeField] private float steeringPower;
-    [SerializeField] private float laserDamage;
-    [SerializeField] private float missileDamage;
-    [SerializeField] private float shieldRegenDelay;
-    [SerializeField] private float shieldRegenRate;
+    [SerializeField] private float maxDurability = 100;
+    [SerializeField] private float maxShield = 100;
+    [SerializeField] private float throttlePower = 5;
+    [SerializeField] private float steeringPower = 1;
+    [SerializeField] private float laserDamage = 0.1f;
+    [SerializeField] private float missileDamage = 25;
+    [SerializeField] private float shieldRegenDelay = 5;
+    [SerializeField] private float shieldRegenRate = 5;
 
     public float MaxDurability => maxDurability;
     public float MaxShield => maxShield;
