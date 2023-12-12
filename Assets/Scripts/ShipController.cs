@@ -14,10 +14,10 @@ public class ShipController : MonoBehaviour
     private protected Rigidbody _rigidbody;
     private float _throttlePower;
     private protected float _steeringPower;
-    private float _maxHealth;
-    private float _curHealth;
-    private float _maxShields;
-    private float _curShields;
+    private float _maxDurability;
+    private float _curDurability;
+    private float _maxShield;
+    private float _curShield;
     private float _laserDamage;
     private RaycastHit _laserHit;
     private readonly List<Blaster> _blasters = new();
@@ -28,11 +28,30 @@ public class ShipController : MonoBehaviour
     [SerializeField] private Equipment _equipment;
 
     private const float THROTTLE_MULTIPLIER = 1000000;
+    
+    public delegate void StatChanged(float value);
 
-    public float CurHealth
+    public event StatChanged DurabilityChanged;
+    public event StatChanged ShieldChanged;
+
+    public float CurDurability
     {
-        get => _curHealth;
-        set => _curHealth = value < 0 ? 0 : value > _maxHealth ? _maxHealth : value;
+        get => _curDurability;
+        set
+        {
+            _curDurability = value < 0 ? 0 : value > _maxDurability ? _maxDurability : value;
+            DurabilityChanged?.Invoke(_curDurability);
+        }
+    }
+    
+    public float CurShield
+    {
+        get => _curShield;
+        set
+        {
+            _curShield = value < 0 ? 0 : value > _maxShield ? _maxShield : value; 
+            DurabilityChanged?.Invoke(_curShield);
+        }
     }
 
     private void Awake()
@@ -44,8 +63,8 @@ public class ShipController : MonoBehaviour
 
         _throttlePower = statsSO.ThrottlePower;
         _steeringPower = statsSO.SteeringPower;
-        _curHealth = _maxHealth = statsSO.MaxHealth;
-        _curShields = _maxShields = statsSO.MaxShields;
+        _curDurability = _maxDurability = statsSO.MaxDurability;
+        _curShield = _maxShield = statsSO.MaxShield;
         _laserDamage = statsSO.LaserDamage;
     }
 
@@ -77,7 +96,7 @@ public class ShipController : MonoBehaviour
                 if (Physics.Raycast(blaster.Transform.position, blaster.Transform.forward, out _laserHit, hitMask))
                 {
                     blaster.LineRenderer.SetPosition(1, Vector3.forward * _laserHit.distance);
-                    _laserHit.transform.GetComponent<ShipController>().CurHealth -= _laserDamage;
+                    _laserHit.transform.GetComponent<ShipController>().CurDurability -= _laserDamage;
                 }
                 else
                 {
