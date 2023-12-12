@@ -7,6 +7,7 @@ public class EnemyShipController : ShipController
 
     private void Start()
     {
+        base.Start();
         _player = FindObjectOfType<PlayerShipController>().transform;
     }
 
@@ -24,9 +25,11 @@ public class EnemyShipController : ShipController
             var yaw = Vector3.SignedAngle(Vector3.forward, yawError, Vector3.up);
             yaw = Mathf.Clamp(yaw, -1, 1);
             _rigidbody.AddTorque(transform.up * (yaw * _steeringPower), ForceMode.Acceleration);
+            Shoot(true);
         }
         else
         {
+            Shoot(false);
             var roll = Vector3.SignedAngle(Vector3.up, rollError, Vector3.forward);
             _steering.x = Mathf.Clamp(roll, -1, 1);
         }

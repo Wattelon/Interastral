@@ -12,13 +12,18 @@ public class ShipController : MonoBehaviour
 
     private protected Transform _transform;
     private protected Rigidbody _rigidbody;
-    private float _throttlePower;
     private protected float _steeringPower;
+    private float _throttlePower;
     private float _maxDurability;
     private float _curDurability;
     private float _maxShield;
     private float _curShield;
     private float _laserDamage;
+    private float _shieldRegenDelay;
+    private float _shieldRegenRate;
+    private float _shieldRegenTimer;
+    private bool _shieldExhausted;
+    private bool _shieldFull = true;
     private RaycastHit _laserHit;
     private readonly List<Blaster> _blasters = new();
     [SerializeField] private bool _isShootingLaser;
@@ -39,7 +44,12 @@ public class ShipController : MonoBehaviour
         get => _curDurability;
         set
         {
+            Debug.Log($"Durability damaged for {_curDurability - value}, currently {value} durability");
             _curDurability = value < 0 ? 0 : value > _maxDurability ? _maxDurability : value;
+            if (_curDurability == 0)
+            {
+                Destroy(gameObject);
+            }
             DurabilityChanged?.Invoke(_curDurability);
         }
     }
@@ -49,8 +59,11 @@ public class ShipController : MonoBehaviour
         get => _curShield;
         set
         {
-            _curShield = value < 0 ? 0 : value > _maxShield ? _maxShield : value; 
-            DurabilityChanged?.Invoke(_curShield);
+            Debug.Log($"Shield damaged for {_curShield - value}, currently {value} shield");
+            _curShield = value < 0 ? 0 : value > _maxShield ? _maxShield : value;
+            _shieldExhausted = _curShield == 0;
+            _shieldFull = value >= _maxShield;
+            ShieldChanged?.Invoke(_curShield);
         }
     }
 
@@ -66,9 +79,11 @@ public class ShipController : MonoBehaviour
         _curDurability = _maxDurability = statsSO.MaxDurability;
         _curShield = _maxShield = statsSO.MaxShield;
         _laserDamage = statsSO.LaserDamage;
+        _shieldRegenDelay = statsSO.ShieldRegenDelay;
+        _shieldRegenRate = statsSO.ShieldRegenRate;
     }
 
-    private void Start()
+    private protected void Start()
     {
         foreach (var blaster in blasters)
         {
@@ -96,13 +111,22 @@ public class ShipController : MonoBehaviour
                 if (Physics.Raycast(blaster.Transform.position, blaster.Transform.forward, out _laserHit, hitMask))
                 {
                     blaster.LineRenderer.SetPosition(1, Vector3.forward * _laserHit.distance);
-                    _laserHit.transform.GetComponent<ShipController>().CurDurability -= _laserDamage;
+                    _laserHit.transform.GetComponent<ShipController>().Damage(_laserDamage, false, 0.5f);
                 }
                 else
                 {
                     blaster.LineRenderer.SetPosition(1, Vector3.forward * 1000);
                 }
             }
+        }
+        
+        if (_shieldRegenTimer <= 0 && !_shieldFull)
+        {
+            CurShield += _shieldRegenRate * Time.deltaTime;
+        }
+        else
+        {
+            _shieldRegenTimer -= Time.deltaTime;
         }
     }
 
@@ -123,6 +147,19 @@ public class ShipController : MonoBehaviour
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    public void Damage(float value, bool bypassShield = false, float shieldMultiplier = 1, float durabilityMultiplier = 1)
+    {
+        if (bypassShield || _shieldExhausted)
+        {
+            CurDurability -= value * durabilityMultiplier;
+        }
+        else
+        {
+            CurShield -= value * shieldMultiplier;
+            _shieldRegenTimer = _shieldRegenDelay;
         }
     }
 }

@@ -18,3 +18,5 @@ MonoBehaviour:
   steeringPower: 1
   laserDamage: 0.1
   missileDamage: 0
+  shieldRegenDelay: 5
+  shieldRegenRate: 5
