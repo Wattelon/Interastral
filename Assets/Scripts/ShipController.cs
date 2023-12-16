@@ -9,6 +9,9 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float maxAngularVelocity;
     [SerializeField] private protected List<Transform> blasters;
     [SerializeField] private LayerMask hitMask;
+    [SerializeField] private bool isEnemy;
+    [SerializeField] private List<Material> lockMaterials;
+    [SerializeField] private MeshRenderer _lock;
 
     private protected Transform _transform;
     private protected Rigidbody _rigidbody;
@@ -19,13 +22,21 @@ public class ShipController : MonoBehaviour
     private float _maxShield;
     private float _curShield;
     private float _laserDamage;
+    private float _missileDamage;
+    private float _missileRange;
+    private float _missileLockAngle;
+    private float _missileLockTime;
+    private float _missileLockTimer;
     private float _shieldRegenDelay;
     private float _shieldRegenRate;
     private float _shieldRegenTimer;
+    private bool _missileTracking;
     private bool _shieldExhausted;
     private bool _shieldFull = true;
+    private Transform _target = null;
     private RaycastHit _laserHit;
     private readonly List<Blaster> _blasters = new();
+    private readonly List<Transform> _targets = new();
     [SerializeField] private bool _isShootingLaser;
     [SerializeField] private protected Vector2 _steering;
     [SerializeField] private protected float _throttle;
@@ -79,8 +90,14 @@ public class ShipController : MonoBehaviour
         _curDurability = _maxDurability = statsSO.MaxDurability;
         _curShield = _maxShield = statsSO.MaxShield;
         _laserDamage = statsSO.LaserDamage;
+        _missileDamage = statsSO.MissileDamage;
+        _missileRange = statsSO.MissileRange;
+        _missileLockAngle = statsSO.MissileLockAngle;
+        _missileLockTimer = _missileLockTime = statsSO.MissileLockTime;
         _shieldRegenDelay = statsSO.ShieldRegenDelay;
         _shieldRegenRate = statsSO.ShieldRegenRate;
+
+        GetComponent<SphereCollider>().radius = _missileRange;
     }
 
     private protected void Start()
@@ -128,6 +145,85 @@ public class ShipController : MonoBehaviour
         {
             _shieldRegenTimer -= Time.deltaTime;
         }
+        
+        UpdateMissileLock();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && !_targets.Contains(other.transform))
+        {
+            _targets.Add(other.transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && _targets.Contains(other.transform))
+        {
+            _targets.Remove(other.transform);
+        }
+    }
+
+    private protected void UpdateMissileLock()
+    {
+        if (_missileTracking && _target is not null)
+        {
+            var error = _target.position - _transform.position;
+            var errorDir = Quaternion.Inverse(_transform.rotation) * error.normalized;
+
+            if (_targets.Contains(_target) && Vector3.Angle(Vector3.forward, errorDir) <= _missileLockAngle)
+            {
+                _missileLockTimer -= Time.fixedDeltaTime;
+                if (_missileLockTimer <= 0)
+                {
+                    _lock.material = lockMaterials[1];
+                }
+            }
+            else
+            {
+                _missileTracking = false;
+                _missileLockTimer = _missileLockTime;
+                _lock.material = lockMaterials[0];
+                _target = null;
+            }
+        }
+        else if (_targets.Count > 0)
+        {
+            float sqrMag = 0;
+            foreach (var target in _targets)
+            {
+                var error = target.position - _transform.position;
+                var errorDir = Quaternion.Inverse(_transform.rotation) * error.normalized;
+
+                if (Vector3.Angle(Vector3.forward, errorDir) <= _missileLockAngle) {
+                    if (_target is null || error.sqrMagnitude < sqrMag)
+                    {
+                        _target = target;
+                        sqrMag = error.sqrMagnitude;
+                        _missileTracking = true;
+                    }
+                }
+            }
+        }
+        
+        
+        //var targetDir = Vector3.forward;
+        //_missileTracking = false;
+
+        /*if (Target != null && !Target.Plane.Dead) {
+            var error = target.Position - Rigidbody.position;
+            var errorDir = Quaternion.Inverse(Rigidbody.rotation) * error.normalized; //transform into local space
+
+            if (error.magnitude <= lockRange && Vector3.Angle(Vector3.forward, errorDir) <= lockAngle) {
+                _missileTracking = true;
+                targetDir = errorDir;
+            }
+        }
+        
+        missileLockDirection = Vector3.RotateTowards(missileLockDirection, targetDir, Mathf.Deg2Rad * lockSpeed * dt, 0);
+
+        MissileLocked = Target != null && _missileTracking && Vector3.Angle(missileLockDirection, targetDir) < lockSpeed * dt;*/
     }
 
     private protected void Shoot(bool toggle)

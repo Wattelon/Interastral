@@ -21,7 +21,7 @@ public class EnemyShipController : ShipController
         var rollError = new Vector3(error.x, error.y, 0).normalized;
         var yawError = new Vector3(error.x, 0, error.z).normalized;
 
-        if (Vector3.Angle(Vector3.forward, errorDir) < 1) {
+        if (Vector3.Angle(Vector3.forward, errorDir) < 15) {
             var yaw = Vector3.SignedAngle(Vector3.forward, yawError, Vector3.up);
             yaw = Mathf.Clamp(yaw, -1, 1);
             _rigidbody.AddTorque(transform.up * (yaw * _steeringPower), ForceMode.Acceleration);

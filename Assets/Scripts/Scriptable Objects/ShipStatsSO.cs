@@ -9,6 +9,9 @@ public class ShipStatsSO : ScriptableObject
     [SerializeField] private float steeringPower = 1;
     [SerializeField] private float laserDamage = 0.1f;
     [SerializeField] private float missileDamage = 25;
+    [SerializeField] private float missileRange = 25;
+    [SerializeField] private float missileLockAngle = 25;
+    [SerializeField] private float missileLockTime = 3;
     [SerializeField] private float shieldRegenDelay = 5;
     [SerializeField] private float shieldRegenRate = 5;
 
@@ -18,6 +21,9 @@ public class ShipStatsSO : ScriptableObject
     public float SteeringPower => steeringPower;
     public float LaserDamage => laserDamage;
     public float MissileDamage => missileDamage;
+    public float MissileRange => missileRange;
+    public float MissileLockAngle => missileLockAngle;
+    public float MissileLockTime => missileLockTime;
     public float ShieldRegenDelay => shieldRegenDelay;
     public float ShieldRegenRate => shieldRegenRate;
 }

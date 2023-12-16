@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDurability: 50
   maxShield: 50
-  throttlePower: 5
-  steeringPower: 0.5
+  throttlePower: 0
+  steeringPower: 0
   laserDamage: 0.05
   missileDamage: 25
   shieldRegenDelay: 5
