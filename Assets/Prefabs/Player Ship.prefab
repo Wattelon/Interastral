@@ -5450,6 +5450,12 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 128
+  isEnemy: 0
+  lockMaterials: []
+  _lock: {fileID: 0}
+  missile: {fileID: 0}
+  missileCount: 0
+  missileLaunchers: []
   _isShootingLaser: 0
   _steering: {x: 0, y: 0}
   _throttle: 0

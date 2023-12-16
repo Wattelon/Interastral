@@ -12,6 +12,9 @@ public class ShipController : MonoBehaviour
     [SerializeField] private bool isEnemy;
     [SerializeField] private List<Material> lockMaterials;
     [SerializeField] private MeshRenderer _lock;
+    [SerializeField] private GameObject missile;
+    [SerializeField] private int missileCount;
+    [SerializeField] private List<Transform> missileLaunchers;
 
     private protected Transform _transform;
     private protected Rigidbody _rigidbody;
@@ -30,13 +33,13 @@ public class ShipController : MonoBehaviour
     private float _shieldRegenDelay;
     private float _shieldRegenRate;
     private float _shieldRegenTimer;
-    private bool _missileTracking;
+    private bool _isMissileTracking;
     private bool _shieldExhausted;
     private bool _shieldFull = true;
-    private Transform _target = null;
+    private Rigidbody _lockedTarget;
     private RaycastHit _laserHit;
     private readonly List<Blaster> _blasters = new();
-    private readonly List<Transform> _targets = new();
+    private readonly List<Rigidbody> _targets = new();
     [SerializeField] private bool _isShootingLaser;
     [SerializeField] private protected Vector2 _steering;
     [SerializeField] private protected float _throttle;
@@ -151,41 +154,47 @@ public class ShipController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && !_targets.Contains(other.transform))
+        if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && !_targets.Contains(other.GetComponent<Rigidbody>()))
         {
-            _targets.Add(other.transform);
+            _targets.Add(other.GetComponent<Rigidbody>());
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && _targets.Contains(other.transform))
+        if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && _targets.Contains(other.GetComponent<Rigidbody>()))
         {
-            _targets.Remove(other.transform);
+            _targets.Remove(other.GetComponent<Rigidbody>());
         }
     }
 
-    private protected void UpdateMissileLock()
+    private void UpdateMissileLock()
     {
-        if (_missileTracking && _target is not null)
+        if (_isMissileTracking && _lockedTarget is not null && !_lockedTarget.IsSleeping())
         {
-            var error = _target.position - _transform.position;
+            var error = _lockedTarget.position - _transform.position;
             var errorDir = Quaternion.Inverse(_transform.rotation) * error.normalized;
 
-            if (_targets.Contains(_target) && Vector3.Angle(Vector3.forward, errorDir) <= _missileLockAngle)
+            if (_targets.Contains(_lockedTarget) && Vector3.Angle(Vector3.forward, errorDir) <= _missileLockAngle)
             {
                 _missileLockTimer -= Time.fixedDeltaTime;
                 if (_missileLockTimer <= 0)
                 {
-                    _lock.material = lockMaterials[1];
+                    if (_lock is not null)
+                    {
+                        _lock.material = lockMaterials[1];
+                    }
                 }
             }
             else
             {
-                _missileTracking = false;
+                _isMissileTracking = false;
                 _missileLockTimer = _missileLockTime;
-                _lock.material = lockMaterials[0];
-                _target = null;
+                if (_lock is not null)
+                {
+                    _lock.material = lockMaterials[0];
+                }
+                _lockedTarget = null;
             }
         }
         else if (_targets.Count > 0)
@@ -197,33 +206,15 @@ public class ShipController : MonoBehaviour
                 var errorDir = Quaternion.Inverse(_transform.rotation) * error.normalized;
 
                 if (Vector3.Angle(Vector3.forward, errorDir) <= _missileLockAngle) {
-                    if (_target is null || error.sqrMagnitude < sqrMag)
+                    if (_lockedTarget is null || error.sqrMagnitude < sqrMag)
                     {
-                        _target = target;
+                        _lockedTarget = target;
                         sqrMag = error.sqrMagnitude;
-                        _missileTracking = true;
+                        _isMissileTracking = true;
                     }
                 }
             }
         }
-        
-        
-        //var targetDir = Vector3.forward;
-        //_missileTracking = false;
-
-        /*if (Target != null && !Target.Plane.Dead) {
-            var error = target.Position - Rigidbody.position;
-            var errorDir = Quaternion.Inverse(Rigidbody.rotation) * error.normalized; //transform into local space
-
-            if (error.magnitude <= lockRange && Vector3.Angle(Vector3.forward, errorDir) <= lockAngle) {
-                _missileTracking = true;
-                targetDir = errorDir;
-            }
-        }
-        
-        missileLockDirection = Vector3.RotateTowards(missileLockDirection, targetDir, Mathf.Deg2Rad * lockSpeed * dt, 0);
-
-        MissileLocked = Target != null && _missileTracking && Vector3.Angle(missileLockDirection, targetDir) < lockSpeed * dt;*/
     }
 
     private protected void Shoot(bool toggle)
@@ -238,6 +229,13 @@ public class ShipController : MonoBehaviour
                 }
                 break;
             case Equipment.Missile:
+                if (toggle && missileCount > 0)
+                {
+                    var launcher = missileLaunchers[missileCount % missileLaunchers.Count];
+                    var launchedMissile = Instantiate(missile, launcher.position, launcher.rotation);
+                    launchedMissile.GetComponent<Missile>().Launch(this, _lockedTarget);
+                    missileCount--;
+                }
                 break;
             case Equipment.Manipulator:
                 break;
