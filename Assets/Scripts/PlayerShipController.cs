@@ -1,6 +1,6 @@
 using UnityEngine.XR.Content.Interaction;
 
-public class PlayerShipController : ShipController
+public class PlayerShipController : BaseShipController
 {
     public void SetThrottle(XRJoystick throttleControl)
     {

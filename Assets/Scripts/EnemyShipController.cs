@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyShipController : ShipController
+public class EnemyShipController : BaseShipController
 {
     private Transform _player;
     private Vector2 _lastInput;

@@ -11,7 +11,7 @@ public class Missile : MonoBehaviour
     [SerializeField] private float turningGForce;
     [SerializeField] private LayerMask collisionMask;
     
-    private ShipController _owner;
+    private BaseShipController _owner;
     private Rigidbody _target;
     private Transform _transform;
     private Vector3 _lastPosition;
@@ -41,7 +41,7 @@ public class Missile : MonoBehaviour
         _rigidbody.velocity = _rigidbody.rotation * new Vector3(0, 0, speed);
     }
     
-    public void Launch(ShipController owner, Rigidbody target)
+    public void Launch(BaseShipController owner, Rigidbody target)
     {
         _owner = owner;
         _target = target;
@@ -54,7 +54,7 @@ public class Missile : MonoBehaviour
         var ray = new Ray(_lastPosition, error.normalized);
 
         if (Physics.Raycast(ray, out var hit, error.magnitude, collisionMask.value)) {
-            var other = hit.collider.gameObject.GetComponent<ShipController>();
+            var other = hit.collider.gameObject.GetComponent<BaseShipController>();
 
             if (other is not null && other != _owner) {
                 _rigidbody.position = hit.point;
@@ -92,7 +92,7 @@ public class Missile : MonoBehaviour
 
         foreach (var hit in hits) {
             Debug.Log(hit.name);
-            var other = hit?.GetComponent<ShipController>();
+            var other = hit?.GetComponent<BaseShipController>();
             other?.Damage(damage, false, 2);
         }
         Destroy(gameObject);

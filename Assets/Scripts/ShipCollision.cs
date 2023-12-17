@@ -5,18 +5,18 @@ public class ShipCollision : MonoBehaviour
     [SerializeField] private LayerMask collisionLayer;
     [SerializeField] private float collisionVelocityThreshold;
  
-    private ShipController _ship;
+    private BaseShipController baseShip;
 
     private void Awake()
     {
-        _ship = transform.GetComponent<ShipController>();
+        baseShip = transform.GetComponent<BaseShipController>();
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (LayerMaskUnpack.IsLayerInMask(other.gameObject.layer, collisionLayer) && other.relativeVelocity.sqrMagnitude >= Mathf.Pow(collisionVelocityThreshold, 2))
         {
-            _ship.Damage(other.relativeVelocity.sqrMagnitude / 100, true);
+            baseShip.Damage(other.relativeVelocity.sqrMagnitude / 100, true);
         }
     }
 }

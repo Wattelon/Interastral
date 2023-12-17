@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipController : MonoBehaviour
+public class BaseShipController : MonoBehaviour
 {
     [SerializeField] private ShipStatsSO statsSO;
     [SerializeField] private float maxLinearVelocity;
@@ -33,6 +33,7 @@ public class ShipController : MonoBehaviour
     private float _shieldRegenDelay;
     private float _shieldRegenRate;
     private float _shieldRegenTimer;
+    private float _targetLocateRange;
     private bool _isMissileTracking;
     private bool _shieldExhausted;
     private bool _shieldFull = true;
@@ -49,9 +50,11 @@ public class ShipController : MonoBehaviour
     private const float THROTTLE_MULTIPLIER = 1000000;
     
     public delegate void StatChanged(float value);
-
+    public delegate void TargetAcquired(Rigidbody target, bool isAcquired);
     public event StatChanged DurabilityChanged;
     public event StatChanged ShieldChanged;
+    public event TargetAcquired TargetLocated;
+    public event TargetAcquired TargetLocked;
 
     public float CurDurability
     {
@@ -94,13 +97,14 @@ public class ShipController : MonoBehaviour
         _curShield = _maxShield = statsSO.MaxShield;
         _laserDamage = statsSO.LaserDamage;
         _missileDamage = statsSO.MissileDamage;
-        _missileRange = statsSO.MissileRange;
+        _missileRange = statsSO.MissileLockRange;
         _missileLockAngle = statsSO.MissileLockAngle;
         _missileLockTimer = _missileLockTime = statsSO.MissileLockTime;
         _shieldRegenDelay = statsSO.ShieldRegenDelay;
         _shieldRegenRate = statsSO.ShieldRegenRate;
+        _targetLocateRange = statsSO.TargetLocateRange;
 
-        GetComponent<SphereCollider>().radius = _missileRange;
+        GetComponent<SphereCollider>().radius = _targetLocateRange;
     }
 
     private protected void Start()
@@ -131,7 +135,7 @@ public class ShipController : MonoBehaviour
                 if (Physics.Raycast(blaster.Transform.position, blaster.Transform.forward, out _laserHit, Mathf.Infinity, hitMask))
                 {
                     blaster.LineRenderer.SetPosition(1, Vector3.forward * _laserHit.distance);
-                    _laserHit.transform.GetComponent<ShipController>().Damage(_laserDamage, false, 0.5f);
+                    _laserHit.transform.GetComponent<BaseShipController>().Damage(_laserDamage, false, 0.5f);
                 }
                 else
                 {
@@ -156,7 +160,9 @@ public class ShipController : MonoBehaviour
     {
         if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && !_targets.Contains(other.GetComponent<Rigidbody>()))
         {
-            _targets.Add(other.GetComponent<Rigidbody>());
+            var otherRigidbody = other.GetComponent<Rigidbody>();
+            _targets.Add(otherRigidbody);
+            TargetLocated?.Invoke(otherRigidbody, true);
         }
     }
 
@@ -164,7 +170,9 @@ public class ShipController : MonoBehaviour
     {
         if (isEnemy ? other.TryGetComponent(out PlayerShipController _) : other.TryGetComponent(out EnemyShipController _) && _targets.Contains(other.GetComponent<Rigidbody>()))
         {
-            _targets.Remove(other.GetComponent<Rigidbody>());
+            var otherRigidbody = other.GetComponent<Rigidbody>();
+            _targets.Remove(otherRigidbody);
+            TargetLocated?.Invoke(otherRigidbody, false);
         }
     }
 
@@ -184,6 +192,7 @@ public class ShipController : MonoBehaviour
                     {
                         _lock.material = lockMaterials[1];
                     }
+                    TargetLocked?.Invoke(_lockedTarget, true);
                 }
             }
             else
@@ -195,6 +204,7 @@ public class ShipController : MonoBehaviour
                     _lock.material = lockMaterials[0];
                 }
                 _lockedTarget = null;
+                TargetLocked?.Invoke(_lockedTarget, false);
             }
         }
         else if (_targets.Count > 0)
