@@ -39,6 +39,7 @@ public class BaseShipController : MonoBehaviour
     private bool _shieldFull = true;
     private Rigidbody _lockedTarget;
     private RaycastHit _laserHit;
+    private AudioSource _audioEngines;
     private readonly List<Blaster> _blasters = new();
     private readonly List<Rigidbody> _targets = new();
     [SerializeField] private bool _isShootingLaser;
@@ -49,13 +50,15 @@ public class BaseShipController : MonoBehaviour
 
     private const float THROTTLE_MULTIPLIER = 1000000;
     
+    public delegate void Condition(Rigidbody rigidbody);
+    public event Condition Dead;
     public delegate void StatChanged(float value);
-    public delegate void TargetAcquired(Rigidbody target, bool isAcquired);
     public event StatChanged DurabilityChanged;
     public event StatChanged ShieldChanged;
+    public delegate void TargetAcquired(Rigidbody target, bool isAcquired);
     public event TargetAcquired TargetLocated;
     public event TargetAcquired TargetLocked;
-
+    
     public float CurDurability
     {
         get => _curDurability;
@@ -65,6 +68,7 @@ public class BaseShipController : MonoBehaviour
             _curDurability = value < 0 ? 0 : value > _maxDurability ? _maxDurability : value;
             if (_curDurability == 0)
             {
+                Dead?.Invoke(_rigidbody);
                 Destroy(gameObject);
             }
             DurabilityChanged?.Invoke(_curDurability);
@@ -87,6 +91,7 @@ public class BaseShipController : MonoBehaviour
     private void Awake()
     {
         _transform = transform;
+        _audioEngines = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.maxAngularVelocity = maxAngularVelocity;
         _rigidbody.maxLinearVelocity = maxLinearVelocity;
@@ -115,7 +120,8 @@ public class BaseShipController : MonoBehaviour
             {
                 Transform = blaster,
                 LineRenderer = blaster.GetComponent<LineRenderer>(),
-                ParticleSystem = blaster.GetComponent<ParticleSystem>()
+                ParticleSystem = blaster.GetComponent<ParticleSystem>(),
+                AudioSource = blaster.GetComponent<AudioSource>()
             };
             _blasters.Add(blasterStruct);
         }
@@ -154,6 +160,9 @@ public class BaseShipController : MonoBehaviour
         }
         
         UpdateMissileLock();
+        
+        _audioEngines.volume = _throttle / 2;
+        _audioEngines.pitch = 0.9f + _throttle / 10;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -163,6 +172,7 @@ public class BaseShipController : MonoBehaviour
             var otherRigidbody = other.GetComponent<Rigidbody>();
             _targets.Add(otherRigidbody);
             TargetLocated?.Invoke(otherRigidbody, true);
+            other.GetComponent<BaseShipController>().Dead += ProcessDeadTarget;
         }
     }
 
@@ -173,12 +183,13 @@ public class BaseShipController : MonoBehaviour
             var otherRigidbody = other.GetComponent<Rigidbody>();
             _targets.Remove(otherRigidbody);
             TargetLocated?.Invoke(otherRigidbody, false);
+            other.GetComponent<BaseShipController>().Dead -= ProcessDeadTarget;
         }
     }
 
     private void UpdateMissileLock()
     {
-        if (_isMissileTracking && _lockedTarget is not null && !_lockedTarget.IsSleeping())
+        if (_isMissileTracking && _lockedTarget)
         {
             var error = _lockedTarget.position - _transform.position;
             var errorDir = Quaternion.Inverse(_transform.rotation) * error.normalized;
@@ -193,6 +204,10 @@ public class BaseShipController : MonoBehaviour
                         _lock.material = lockMaterials[1];
                     }
                     TargetLocked?.Invoke(_lockedTarget, true);
+                }
+                else
+                {
+                    TargetLocked?.Invoke(_lockedTarget, false);
                 }
             }
             else
@@ -236,14 +251,17 @@ public class BaseShipController : MonoBehaviour
                 foreach (var blaster in _blasters)
                 {
                     blaster.LineRenderer.enabled = _isShootingLaser;
+                    blaster.AudioSource.enabled = _isShootingLaser;
                 }
                 break;
             case Equipment.Missile:
                 if (toggle && missileCount > 0)
                 {
                     var launcher = missileLaunchers[missileCount % missileLaunchers.Count];
-                    var launchedMissile = Instantiate(missile, launcher.position, launcher.rotation);
-                    launchedMissile.GetComponent<Missile>().Launch(this, _lockedTarget);
+                    var launchedMissile = Instantiate(missile, launcher.position, launcher.rotation).GetComponent<Missile>();
+                    launchedMissile.Launch(this, _lockedTarget);
+                    _lockedTarget.GetComponent<BaseShipController>().Dead += launchedMissile.ProcessDeadTarget;
+                    launcher.GetComponent<AudioSource>().Play();
                     missileCount--;
                 }
                 break;
@@ -266,6 +284,17 @@ public class BaseShipController : MonoBehaviour
             _shieldRegenTimer = _shieldRegenDelay;
         }
     }
+
+    private void ProcessDeadTarget(Rigidbody target)
+    {
+        _targets.Remove(target);
+        if (_lockedTarget == target)
+        {
+            _lockedTarget = null;
+        }
+        TargetLocated?.Invoke(target, false);
+        TargetLocked?.Invoke(target, false);
+    }
 }
 
 public enum Equipment
@@ -280,4 +309,5 @@ public struct Blaster
     public Transform Transform;
     public LineRenderer LineRenderer;
     public ParticleSystem ParticleSystem;
+    public AudioSource AudioSource;
 }

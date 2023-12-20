@@ -22,5 +22,5 @@ MonoBehaviour:
   missileLockAngle: 60
   missileLockTime: 3
   shieldRegenDelay: 5
-  shieldRegenRate: 5
+  shieldRegenRate: 0
   targetLocateRange: 2000

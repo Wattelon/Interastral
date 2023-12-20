@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Missile : MonoBehaviour
@@ -54,7 +53,7 @@ public class Missile : MonoBehaviour
         var ray = new Ray(_lastPosition, error.normalized);
 
         if (Physics.Raycast(ray, out var hit, error.magnitude, collisionMask.value)) {
-            var other = hit.collider.gameObject.GetComponent<BaseShipController>();
+            var other = hit.collider.gameObject.GetComponentInParent<BaseShipController>();
 
             if (other is not null && other != _owner) {
                 _rigidbody.position = hit.point;
@@ -87,14 +86,24 @@ public class Missile : MonoBehaviour
         }
     }
 
-    private void Explode() {
+    private void Explode()
+    {
         var hits = Physics.OverlapSphere(_rigidbody.position, damageRadius, collisionMask.value);
 
         foreach (var hit in hits) {
             Debug.Log(hit.name);
-            var other = hit?.GetComponent<BaseShipController>();
-            other?.Damage(damage, false, 2);
+            var other = hit.GetComponent<BaseShipController>();
+            other.Damage(damage, false, 2);
         }
+
         Destroy(gameObject);
+    }
+
+    public void ProcessDeadTarget(Rigidbody target)
+    {
+        if (_target == target)
+        {
+            _target = null;
+        }
     }
 }
