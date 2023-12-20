@@ -10,8 +10,6 @@ public class BaseShipController : MonoBehaviour
     [SerializeField] private protected List<Transform> blasters;
     [SerializeField] private LayerMask hitMask;
     [SerializeField] private bool isEnemy;
-    [SerializeField] private List<Material> lockMaterials;
-    [SerializeField] private MeshRenderer _lock;
     [SerializeField] private GameObject missile;
     [SerializeField] private int missileCount;
     [SerializeField] private List<Transform> missileLaunchers;
@@ -37,7 +35,7 @@ public class BaseShipController : MonoBehaviour
     private bool _isMissileTracking;
     private bool _shieldExhausted;
     private bool _shieldFull = true;
-    private Rigidbody _lockedTarget;
+    private protected Rigidbody _lockedTarget;
     private RaycastHit _laserHit;
     private AudioSource _audioEngines;
     private readonly List<Blaster> _blasters = new();
@@ -46,7 +44,7 @@ public class BaseShipController : MonoBehaviour
     [SerializeField] private protected Vector2 _steering;
     [SerializeField] private protected float _throttle;
     [SerializeField] private protected bool _isThrottleVertical;
-    [SerializeField] private Equipment _equipment;
+    [SerializeField] private protected Equipment _equipment;
 
     private const float THROTTLE_MULTIPLIER = 1000000;
     
@@ -197,27 +195,12 @@ public class BaseShipController : MonoBehaviour
             if (_targets.Contains(_lockedTarget) && Vector3.Angle(Vector3.forward, errorDir) <= _missileLockAngle)
             {
                 _missileLockTimer -= Time.fixedDeltaTime;
-                if (_missileLockTimer <= 0)
-                {
-                    if (_lock is not null)
-                    {
-                        _lock.material = lockMaterials[1];
-                    }
-                    TargetLocked?.Invoke(_lockedTarget, true);
-                }
-                else
-                {
-                    TargetLocked?.Invoke(_lockedTarget, false);
-                }
+                TargetLocked?.Invoke(_lockedTarget, _missileLockTimer <= 0);
             }
             else
             {
                 _isMissileTracking = false;
                 _missileLockTimer = _missileLockTime;
-                if (_lock is not null)
-                {
-                    _lock.material = lockMaterials[0];
-                }
                 _lockedTarget = null;
                 TargetLocked?.Invoke(_lockedTarget, false);
             }
@@ -260,7 +243,10 @@ public class BaseShipController : MonoBehaviour
                     var launcher = missileLaunchers[missileCount % missileLaunchers.Count];
                     var launchedMissile = Instantiate(missile, launcher.position, launcher.rotation).GetComponent<Missile>();
                     launchedMissile.Launch(this, _lockedTarget);
-                    _lockedTarget.GetComponent<BaseShipController>().Dead += launchedMissile.ProcessDeadTarget;
+                    if (_lockedTarget is not null)
+                    {
+                        _lockedTarget.GetComponent<BaseShipController>().Dead += launchedMissile.ProcessDeadTarget;
+                    }
                     launcher.GetComponent<AudioSource>().Play();
                     missileCount--;
                 }

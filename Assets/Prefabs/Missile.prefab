@@ -103,11 +103,11 @@ MonoBehaviour:
   speed: 50
   trackingAngle: 180
   damage: 25
-  damageRadius: 0
+  damageRadius: 10
   turningGForce: 100
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
 --- !u!54 &6027127139140594713
 Rigidbody:
   m_ObjectHideFlags: 0

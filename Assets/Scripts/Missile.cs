@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Missile : MonoBehaviour
@@ -89,13 +90,19 @@ public class Missile : MonoBehaviour
     private void Explode()
     {
         var hits = Physics.OverlapSphere(_rigidbody.position, damageRadius, collisionMask.value);
-
+        List<BaseShipController> ships = new();
         foreach (var hit in hits) {
-            Debug.Log(hit.name);
-            var other = hit.GetComponent<BaseShipController>();
-            other.Damage(damage, false, 2);
+            var other = hit.GetComponentInParent<BaseShipController>();
+            if (!ships.Contains(other))
+            {
+                ships.Add(other);
+            }
         }
 
+        foreach (var ship in ships)
+        {
+            ship.Damage(damage, false, 2);
+        }
         Destroy(gameObject);
     }
 
