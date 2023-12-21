@@ -536,7 +536,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 0
+  m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -586,8 +586,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isEnemy: 1
-  lockMaterials: []
-  _lock: {fileID: 0}
   missile: {fileID: 0}
   missileCount: 0
   missileLaunchers: []

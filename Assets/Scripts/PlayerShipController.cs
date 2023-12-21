@@ -9,7 +9,7 @@ public class PlayerShipController : BaseShipController
     [SerializeField] private MeshRenderer crosshair;
     private void Update()
     {
-        crosshair.material = crosshairMaterials[_lockedTarget ? 1 : 0];
+        crosshair.material = crosshairMaterials[_missileLockTimer <= 0 ? 1 : 0];
     }
 
     public void SetThrottle(XRJoystick throttleControl)

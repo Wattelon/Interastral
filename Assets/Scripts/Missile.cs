@@ -9,6 +9,7 @@ public class Missile : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float damageRadius;
     [SerializeField] private float turningGForce;
+    [SerializeField] private float explosionForce;
     [SerializeField] private LayerMask collisionMask;
     
     private BaseShipController _owner;
@@ -57,6 +58,7 @@ public class Missile : MonoBehaviour
             var other = hit.collider.gameObject.GetComponentInParent<BaseShipController>();
 
             if (other is not null && other != _owner) {
+                hit.rigidbody.AddExplosionForce(explosionForce * 100, _rigidbody.position, 0);
                 _rigidbody.position = hit.point;
                 Explode();
             }
@@ -98,10 +100,14 @@ public class Missile : MonoBehaviour
                 ships.Add(other);
             }
         }
-
+        
         foreach (var ship in ships)
         {
-            ship.Damage(damage, false, 2);
+            var shipRigidbody = ship.GetComponent<Rigidbody>();
+            var explosionDistance = (shipRigidbody.position - _rigidbody.position).magnitude;
+            explosionDistance = Mathf.Max(1, explosionDistance / 10);
+            shipRigidbody.AddExplosionForce(explosionForce, _rigidbody.position, damageRadius);
+            ship.Damage(damage / explosionDistance, false, 2);
         }
         Destroy(gameObject);
     }

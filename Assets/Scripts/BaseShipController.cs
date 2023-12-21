@@ -27,7 +27,7 @@ public class BaseShipController : MonoBehaviour
     private float _missileRange;
     private float _missileLockAngle;
     private float _missileLockTime;
-    private float _missileLockTimer;
+    private protected float _missileLockTimer;
     private float _shieldRegenDelay;
     private float _shieldRegenRate;
     private float _shieldRegenTimer;
@@ -35,7 +35,7 @@ public class BaseShipController : MonoBehaviour
     private bool _isMissileTracking;
     private bool _shieldExhausted;
     private bool _shieldFull = true;
-    private protected Rigidbody _lockedTarget;
+    private Rigidbody _lockedTarget;
     private RaycastHit _laserHit;
     private AudioSource _audioEngines;
     private readonly List<Blaster> _blasters = new();
@@ -187,7 +187,7 @@ public class BaseShipController : MonoBehaviour
 
     private void UpdateMissileLock()
     {
-        if (_isMissileTracking && _lockedTarget)
+        if (_isMissileTracking && _lockedTarget is not null)
         {
             var error = _lockedTarget.position - _transform.position;
             var errorDir = Quaternion.Inverse(_transform.rotation) * error.normalized;
@@ -242,10 +242,14 @@ public class BaseShipController : MonoBehaviour
                 {
                     var launcher = missileLaunchers[missileCount % missileLaunchers.Count];
                     var launchedMissile = Instantiate(missile, launcher.position, launcher.rotation).GetComponent<Missile>();
-                    launchedMissile.Launch(this, _lockedTarget);
-                    if (_lockedTarget is not null)
+                    if (_missileLockTimer <= 0)
                     {
+                        launchedMissile.Launch(this, _lockedTarget);
                         _lockedTarget.GetComponent<BaseShipController>().Dead += launchedMissile.ProcessDeadTarget;
+                    }
+                    else
+                    {
+                        launchedMissile.Launch(this, null);
                     }
                     launcher.GetComponent<AudioSource>().Play();
                     missileCount--;
@@ -277,6 +281,7 @@ public class BaseShipController : MonoBehaviour
         if (_lockedTarget == target)
         {
             _lockedTarget = null;
+            _missileLockTimer = _missileLockTime;
         }
         TargetLocated?.Invoke(target, false);
         TargetLocked?.Invoke(target, false);
