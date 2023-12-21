@@ -15,11 +15,12 @@ MonoBehaviour:
   maxDurability: 50
   maxShield: 50
   throttlePower: 0.1
-  steeringPower: 0
+  steeringPower: 1
   laserDamage: 0.05
   missileDamage: 25
-  missileRange: 25
+  missileLockRange: 500
   missileLockAngle: 25
-  missileLockTime: 3
+  missileLockTime: 5
   shieldRegenDelay: 5
   shieldRegenRate: 0
+  targetLocateRange: 2000

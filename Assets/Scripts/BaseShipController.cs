@@ -11,7 +11,7 @@ public class BaseShipController : MonoBehaviour
     [SerializeField] private LayerMask hitMask;
     [SerializeField] private bool isEnemy;
     [SerializeField] private GameObject missile;
-    [SerializeField] private int missileCount;
+    [SerializeField] private protected int missileCount;
     [SerializeField] private List<Transform> missileLaunchers;
 
     private protected Transform _transform;
@@ -28,6 +28,8 @@ public class BaseShipController : MonoBehaviour
     private float _missileLockAngle;
     private float _missileLockTime;
     private protected float _missileLockTimer;
+    [SerializeField] private float _missileReloadTime;
+    private protected float _missileReloadTimer;
     private float _shieldRegenDelay;
     private float _shieldRegenRate;
     private float _shieldRegenTimer;
@@ -39,8 +41,8 @@ public class BaseShipController : MonoBehaviour
     private RaycastHit _laserHit;
     private AudioSource _audioEngines;
     private readonly List<Blaster> _blasters = new();
-    private readonly List<Rigidbody> _targets = new();
-    [SerializeField] private bool _isShootingLaser;
+    private protected readonly List<Rigidbody> _targets = new();
+    [SerializeField] private protected bool _isShootingLaser;
     [SerializeField] private protected Vector2 _steering;
     [SerializeField] private protected float _throttle;
     [SerializeField] private protected bool _isThrottleVertical;
@@ -161,6 +163,7 @@ public class BaseShipController : MonoBehaviour
         
         _audioEngines.volume = _throttle / 2;
         _audioEngines.pitch = 0.9f + _throttle / 10;
+        _missileReloadTimer -= Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -201,8 +204,8 @@ public class BaseShipController : MonoBehaviour
             {
                 _isMissileTracking = false;
                 _missileLockTimer = _missileLockTime;
-                _lockedTarget = null;
                 TargetLocked?.Invoke(_lockedTarget, false);
+                _lockedTarget = null;
             }
         }
         else if (_targets.Count > 0)
@@ -238,7 +241,7 @@ public class BaseShipController : MonoBehaviour
                 }
                 break;
             case Equipment.Missile:
-                if (toggle && missileCount > 0)
+                if (toggle && missileCount > 0 && _missileReloadTimer <= 0)
                 {
                     var launcher = missileLaunchers[missileCount % missileLaunchers.Count];
                     var launchedMissile = Instantiate(missile, launcher.position, launcher.rotation).GetComponent<Missile>();
@@ -246,12 +249,15 @@ public class BaseShipController : MonoBehaviour
                     {
                         launchedMissile.Launch(this, _lockedTarget);
                         _lockedTarget.GetComponent<BaseShipController>().Dead += launchedMissile.ProcessDeadTarget;
+                        _missileLockTimer = _missileLockTime / 2;
                     }
                     else
                     {
                         launchedMissile.Launch(this, null);
+                        _missileLockTimer = _missileLockTime;
                     }
                     launcher.GetComponent<AudioSource>().Play();
+                    _missileReloadTimer = _missileReloadTime;
                     missileCount--;
                 }
                 break;

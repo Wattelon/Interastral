@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.XR.Content.Interaction;
 
 public class CockpitUI : MonoBehaviour
 {
@@ -14,10 +16,18 @@ public class CockpitUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private GameObject targetBox;
     [SerializeField] private GameObject targetLock;
+    [SerializeField] private AudioMixer mixer;
+    [SerializeField] private Camera bottomCamera;
+    [SerializeField] private Camera rearCamera;
+    [SerializeField] private MeshRenderer bottomCameraDisplay;
+    [SerializeField] private MeshRenderer rearCameraDisplay;
 
     private Rigidbody _shipRigidbody;
-    private Dictionary<Rigidbody, Transform> _targetBoxes = new();
-    private Dictionary<Rigidbody, Transform> _targetLocks = new();
+    private readonly Dictionary<Rigidbody, Transform> _targetBoxes = new();
+    private readonly Dictionary<Rigidbody, Transform> _targetLocks = new();
+
+    private const string MIXER_MUSIC = "MusicVolume";
+    private const string MIXER_SFX = "SFXVolume";
 
     private void Start()
     {
@@ -95,5 +105,29 @@ public class CockpitUI : MonoBehaviour
             Destroy(lockOn.gameObject);
             _targetLocks.Remove(target);
         }
+    }
+
+    public void SetMusicVolume(XRKnob knob)
+    {
+        var value = Mathf.Max(0.0001f, knob.value);
+        mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
+    }
+    
+    public void SetSfxVolume(XRKnob knob)
+    {
+        var value = Mathf.Max(0.0001f, knob.value);
+        mixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
+    }
+
+    public void ToggleBottomCamera()
+    {
+        bottomCamera.enabled = !bottomCamera.enabled;
+        bottomCameraDisplay.enabled = !bottomCameraDisplay.enabled;
+    }
+    
+    public void ToggleRearCamera()
+    {
+        rearCamera.enabled = !rearCamera.enabled;
+        rearCameraDisplay.enabled = !rearCameraDisplay.enabled;
     }
 }

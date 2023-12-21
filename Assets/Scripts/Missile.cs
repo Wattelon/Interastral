@@ -11,6 +11,7 @@ public class Missile : MonoBehaviour
     [SerializeField] private float turningGForce;
     [SerializeField] private float explosionForce;
     [SerializeField] private LayerMask collisionMask;
+    [SerializeField] private GameObject explosion;
     
     private BaseShipController _owner;
     private Rigidbody _target;
@@ -109,6 +110,9 @@ public class Missile : MonoBehaviour
             shipRigidbody.AddExplosionForce(explosionForce, _rigidbody.position, damageRadius);
             ship.Damage(damage / explosionDistance, false, 2);
         }
+
+        var vfx = Instantiate(explosion, _rigidbody.position, Quaternion.identity);
+        Destroy(vfx, 3);
         Destroy(gameObject);
     }
 

@@ -109,6 +109,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 128
+  explosion: {fileID: 1845955007268882, guid: e15a789eafadf194a81439dd54b3950a, type: 3}
 --- !u!54 &6027127139140594713
 Rigidbody:
   m_ObjectHideFlags: 0

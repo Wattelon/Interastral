@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.Content.Interaction;
 
 public class PlayerShipController : BaseShipController
@@ -35,5 +35,20 @@ public class PlayerShipController : BaseShipController
     public void ToggleEquipment()
     {
         _equipment = _equipment == Equipment.Laser ? Equipment.Missile : Equipment.Laser;
+    }
+
+    public void ToggleLinearStabilisation()
+    {
+        _rigidbody.drag = _rigidbody.drag <= 1 ? 10 : 1;
+    }
+    
+    public void ToggleAngularStabilisation()
+    {
+        _rigidbody.angularDrag = _rigidbody.angularDrag <= 1 ? 10 : 1;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
