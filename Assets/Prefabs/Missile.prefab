@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
-  speed: 50
+  speed: 250
   trackingAngle: 180
   damage: 25
   damageRadius: 50
-  turningGForce: 100
+  turningGForce: 50
   explosionForce: 1000000
   collisionMask:
     serializedVersion: 2
