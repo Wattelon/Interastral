@@ -13,6 +13,10 @@ public class BaseShipController : MonoBehaviour
     [SerializeField] private GameObject missile;
     [SerializeField] private protected int missileCount;
     [SerializeField] private List<Transform> missileLaunchers;
+    [SerializeField] private AudioSource shieldBreak;
+    [SerializeField] private AudioSource shieldCharge;
+    [SerializeField] private SphereCollider locationSphere;
+    [SerializeField] private GameObject explosion;
 
     private protected Transform _transform;
     private protected Rigidbody _rigidbody;
@@ -36,6 +40,7 @@ public class BaseShipController : MonoBehaviour
     private float _targetLocateRange;
     private bool _isMissileTracking;
     private bool _shieldExhausted;
+    private bool _shieldCharging;
     private bool _shieldFull = true;
     private Rigidbody _lockedTarget;
     private RaycastHit _laserHit;
@@ -64,7 +69,7 @@ public class BaseShipController : MonoBehaviour
         get => _curDurability;
         set
         {
-            Debug.Log($"Durability damaged for {_curDurability - value}, currently {value} durability");
+            //Debug.Log($"Durability damaged for {_curDurability - value}, currently {value} durability");
             _curDurability = value < 0 ? 0 : value > _maxDurability ? _maxDurability : value;
             if (_curDurability == 0)
             {
@@ -80,9 +85,13 @@ public class BaseShipController : MonoBehaviour
         get => _curShield;
         set
         {
-            Debug.Log($"Shield damaged for {_curShield - value}, currently {value} shield");
+            //Debug.Log($"Shield damaged for {_curShield - value}, currently {value} shield");
             _curShield = value < 0 ? 0 : value > _maxShield ? _maxShield : value;
             _shieldExhausted = _curShield == 0;
+            if (!isEnemy && _shieldExhausted)
+            {
+                shieldBreak.Play();
+            }
             _shieldFull = value >= _maxShield;
             ShieldChanged?.Invoke(_curShield);
         }
@@ -109,7 +118,7 @@ public class BaseShipController : MonoBehaviour
         _shieldRegenRate = statsSO.ShieldRegenRate;
         _targetLocateRange = statsSO.TargetLocateRange;
 
-        GetComponent<SphereCollider>().radius = _targetLocateRange;
+        locationSphere.radius = _targetLocateRange;
     }
 
     private protected void Start()
@@ -153,10 +162,16 @@ public class BaseShipController : MonoBehaviour
         if (_shieldRegenTimer <= 0 && !_shieldFull)
         {
             CurShield += _shieldRegenRate * Time.deltaTime;
+            if (!isEnemy && !_shieldCharging)
+            {
+                shieldCharge.Play();
+                _shieldCharging = true;
+            }
         }
         else
         {
             _shieldRegenTimer -= Time.deltaTime;
+            _shieldCharging = false;
         }
         
         UpdateMissileLock();
@@ -291,6 +306,11 @@ public class BaseShipController : MonoBehaviour
         }
         TargetLocated?.Invoke(target, false);
         TargetLocked?.Invoke(target, false);
+    }
+
+    private protected void OnDestroy()
+    {
+        Instantiate(explosion, _transform.position, Quaternion.identity);
     }
 }
 

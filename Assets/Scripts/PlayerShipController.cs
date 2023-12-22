@@ -47,7 +47,7 @@ public class PlayerShipController : BaseShipController
         _rigidbody.angularDrag = _rigidbody.angularDrag <= 1 ? 10 : 1;
     }
 
-    private void OnDestroy()
+    private new void OnDestroy()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

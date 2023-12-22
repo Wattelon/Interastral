@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1545471697594255425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4028378876419906884}
+  - component: {fileID: 3185037445542107113}
+  m_Layer: 9
+  m_Name: Location Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4028378876419906884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545471697594255425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1899744535942833207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3185037445542107113
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545471697594255425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1014
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2745194171886601876
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +532,6 @@ GameObject:
   - component: {fileID: 5834340333449332394}
   - component: {fileID: 2316264784668954548}
   - component: {fileID: 4793734977104839804}
-  - component: {fileID: 5829837876745384399}
   - component: {fileID: 3644088637194943513}
   m_Layer: 0
   m_Name: Enemy Ship
@@ -514,6 +566,7 @@ Transform:
   - {fileID: 8849065243625729948}
   - {fileID: 1161158092796785433}
   - {fileID: 4596203441720888166}
+  - {fileID: 4028378876419906884}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2126696842248163307
@@ -590,6 +643,10 @@ MonoBehaviour:
   missileCount: 4
   missileLaunchers:
   - {fileID: 4922151729311460661}
+  shieldBreak: {fileID: 0}
+  shieldCharge: {fileID: 0}
+  locationSphere: {fileID: 3185037445542107113}
+  explosion: {fileID: 1845955007268882, guid: 6a36c3c8412827c4eb0b5aaa858d76d2, type: 3}
   _missileReloadTime: 5
   _isShootingLaser: 0
   _steering: {x: 0, y: 0}
@@ -612,27 +669,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   collisionVelocityThreshold: 25
---- !u!135 &5829837876745384399
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8056046197890494406}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 502
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &3644088637194943513
 AudioSource:
   m_ObjectHideFlags: 0
