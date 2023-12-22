@@ -8,27 +8,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: f62324f9d92d4cd4daeb88c131dc62ad, type: 2}
+    second: {fileID: 2100000, guid: a3fed8edd1170e94ea28e286c23e4b3f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.003
-    second: {fileID: 2100000, guid: 61f98bbeab262974fb554509d6b6ed0d, type: 2}
+    second: {fileID: 2100000, guid: 8b22f385489136e498cd13c8c92ad0bd, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Station_Cylinder
-    second: {fileID: 2100000, guid: 27d91f59bed8e5a468db83eb172e46c6, type: 2}
+    second: {fileID: 2100000, guid: f41a67f7a1a27ee4f9b0347689bd45b7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: rock
-    second: {fileID: 2100000, guid: 680d8cb86b2defa40a94a081b0454be9, type: 2}
+    second: {fileID: 2100000, guid: e87960160a9cc20418913a2284890634, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: station_top
-    second: {fileID: 2100000, guid: 192763d9366d98042b856a2ae6082a0a, type: 2}
+    second: {fileID: 2100000, guid: 40f7a46f2cc34184782a9ef87b48e689, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

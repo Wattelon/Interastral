@@ -11,7 +11,7 @@ public class BaseShipController : MonoBehaviour
     [SerializeField] private LayerMask hitMask;
     [SerializeField] private bool isEnemy;
     [SerializeField] private GameObject missile;
-    [SerializeField] private protected int missileCount;
+    [SerializeField] public int missileCount;
     [SerializeField] private List<Transform> missileLaunchers;
     [SerializeField] private AudioSource shieldBreak;
     [SerializeField] private AudioSource shieldCharge;
@@ -63,8 +63,8 @@ public class BaseShipController : MonoBehaviour
     public delegate void TargetAcquired(Rigidbody target, bool isAcquired);
     public event TargetAcquired TargetLocated;
     public event TargetAcquired TargetLocked;
-    
-    public float CurDurability
+
+    private float curDurability
     {
         get => _curDurability;
         set
@@ -74,13 +74,14 @@ public class BaseShipController : MonoBehaviour
             if (_curDurability == 0)
             {
                 Dead?.Invoke(_rigidbody);
+                Instantiate(explosion, _transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
             DurabilityChanged?.Invoke(_curDurability);
         }
     }
-    
-    public float CurShield
+
+    private float curShield
     {
         get => _curShield;
         set
@@ -161,7 +162,7 @@ public class BaseShipController : MonoBehaviour
         
         if (_shieldRegenTimer <= 0 && !_shieldFull)
         {
-            CurShield += _shieldRegenRate * Time.deltaTime;
+            curShield += _shieldRegenRate * Time.deltaTime;
             if (!isEnemy && !_shieldCharging)
             {
                 shieldCharge.Play();
@@ -287,11 +288,11 @@ public class BaseShipController : MonoBehaviour
     {
         if (bypassShield || _shieldExhausted)
         {
-            CurDurability -= value * durabilityMultiplier;
+            curDurability -= value * durabilityMultiplier;
         }
         else
         {
-            CurShield -= value * shieldMultiplier;
+            curShield -= value * shieldMultiplier;
             _shieldRegenTimer = _shieldRegenDelay;
         }
     }
@@ -306,11 +307,6 @@ public class BaseShipController : MonoBehaviour
         }
         TargetLocated?.Invoke(target, false);
         TargetLocked?.Invoke(target, false);
-    }
-
-    private protected void OnDestroy()
-    {
-        Instantiate(explosion, _transform.position, Quaternion.identity);
     }
 }
 

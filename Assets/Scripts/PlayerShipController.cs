@@ -34,6 +34,7 @@ public class PlayerShipController : BaseShipController
 
     public void ToggleEquipment()
     {
+        Shoot(false);
         _equipment = _equipment == Equipment.Laser ? Equipment.Missile : Equipment.Laser;
     }
 
@@ -47,7 +48,7 @@ public class PlayerShipController : BaseShipController
         _rigidbody.angularDrag = _rigidbody.angularDrag <= 1 ? 10 : 1;
     }
 
-    private new void OnDestroy()
+    private void OnDestroy()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
