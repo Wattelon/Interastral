@@ -104,7 +104,7 @@ MonoBehaviour:
   trackingAngle: 180
   damage: 25
   damageRadius: 50
-  turningGForce: 50
+  turningGForce: 80
   explosionForce: 1000000
   collisionMask:
     serializedVersion: 2

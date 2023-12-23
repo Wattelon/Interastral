@@ -57,7 +57,7 @@ public class CockpitUI : MonoBehaviour
         
         foreach (var pair in _targetLocks)
         {
-            var scale = Mathf.Clamp((_shipRigidbody.position - pair.Key.position).magnitude, 0, 50);
+            var scale = (_shipRigidbody.position - pair.Key.position).magnitude;
             pair.Value.localScale = Vector3.one * (scale / 30);
             pair.Value.LookAt(_shipRigidbody.transform);
         }
