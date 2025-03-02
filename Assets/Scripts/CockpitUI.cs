@@ -44,7 +44,7 @@ public class CockpitUI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var velocity = (int)_shipRigidbody.velocity.magnitude;
+        var velocity = (int)_shipRigidbody.linearVelocity.magnitude;
         speedSlider.value = velocity;
         speedText.text = $"{velocity}";
         

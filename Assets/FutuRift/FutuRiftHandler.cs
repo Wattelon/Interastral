@@ -22,7 +22,7 @@ namespace Futurift
 
         private void FixedUpdate()
         {
-            var velocity = _rigidbody.velocity;
+            var velocity = _rigidbody.linearVelocity;
             var globalAcceleration = velocity - _previousVelocity;
             var localAcceleration = _transform.InverseTransformDirection(globalAcceleration);
             var clampedAcceleration = Vector3.ClampMagnitude(localAcceleration * 10, maxAccelerationAngle);

@@ -43,7 +43,7 @@ public class Planet : MonoBehaviour
             {
                 if (sqrDistance <= Mathf.Pow(_radius * 2, 2))
                 {
-                    if (Vector3.Angle(collision.velocity, pullDirection) > 30)
+                    if (Vector3.Angle(collision.linearVelocity, pullDirection) > 30)
                     {
                         //Дописать сюда эффект от приливных сил и создание кольца
                     }

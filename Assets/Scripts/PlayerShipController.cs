@@ -40,12 +40,12 @@ public class PlayerShipController : BaseShipController
 
     public void ToggleLinearStabilisation()
     {
-        _rigidbody.drag = _rigidbody.drag <= 1 ? 10 : 1;
+        _rigidbody.linearDamping = _rigidbody.linearDamping <= 1 ? 10 : 1;
     }
     
     public void ToggleAngularStabilisation()
     {
-        _rigidbody.angularDrag = _rigidbody.angularDrag <= 1 ? 10 : 1;
+        _rigidbody.angularDamping = _rigidbody.angularDamping <= 1 ? 10 : 1;
     }
 
     private void OnDestroy()

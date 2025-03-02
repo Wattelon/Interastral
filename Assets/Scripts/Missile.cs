@@ -40,7 +40,7 @@ public class Missile : MonoBehaviour
         CheckCollision();
         TrackTarget();
 
-        _rigidbody.velocity = _rigidbody.rotation * new Vector3(0, 0, speed);
+        _rigidbody.linearVelocity = _rigidbody.rotation * new Vector3(0, 0, speed);
     }
     
     public void Launch(BaseShipController owner, Rigidbody target)
@@ -73,7 +73,7 @@ public class Missile : MonoBehaviour
         if (_target is not null)
         {
             var targetPosition = Intercept.FirstOrderIntercept(_rigidbody.position, Vector3.zero, speed,
-                _target.position, _target.velocity);
+                _target.position, _target.linearVelocity);
             var error = targetPosition - _rigidbody.position;
             var targetDir = error.normalized;
             var currentDir = _rigidbody.rotation * Vector3.forward;
