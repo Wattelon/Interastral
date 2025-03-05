@@ -9,6 +9,7 @@ public class Planet : MonoBehaviour
     private Rigidbody _rigidbody;
     private float _mass;
     private float _radius;
+    private const double GRAVITATIONAL_CONSTANT = 6.67E-11;
 
     private void Awake()
     {
@@ -57,7 +58,7 @@ public class Planet : MonoBehaviour
                 var torqueDirection = Vector3.Angle(other.transform.forward, pullDirection) <= 150 ?
                     Vector3.Cross(other.transform.forward, pullDirection) :
                     Vector3.Cross(pullDirection, other.transform.forward);
-                collision.AddTorque(torqueDirection * (torqueDirection.sqrMagnitude * force / 20));
+                collision.AddTorque(torqueDirection * force);
             }
 
             collision.AddForce(pullDirection * force, ForceMode.Force);

@@ -385,7 +385,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -6447266317303757838, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ButtonPressPoint: 0.5
 --- !u!1 &1110995818649164424
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +519,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -603,6 +605,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -739,6 +744,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -824,6 +832,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -958,6 +969,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1041,6 +1055,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1124,6 +1141,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1198,9 +1218,6 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders:
   - {fileID: 3575514736821296109}
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -1283,33 +1300,6 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_OnFirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectCanceled:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
   m_JoystickMotion: 0
   m_Handle: {fileID: 1187440029357693701}
   m_Value: {x: 0, y: 0}
@@ -1406,6 +1396,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1542,6 +1535,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1625,6 +1621,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1743,6 +1742,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1826,6 +1828,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1909,6 +1914,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1992,6 +2000,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2132,9 +2143,6 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders:
   - {fileID: 5600787766589768058}
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -2193,33 +2201,6 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_OnFirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectCanceled:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
   m_JoystickMotion: 2
   m_Handle: {fileID: 1187660923468495119}
   m_Value: {x: 0, y: -1}
@@ -2303,6 +2284,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2386,6 +2370,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2469,6 +2456,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2585,6 +2575,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2668,6 +2661,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2817,6 +2813,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2936,6 +2935,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3019,6 +3021,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3103,6 +3108,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3186,6 +3194,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3339,6 +3350,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3422,6 +3436,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3546,6 +3563,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3666,6 +3686,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3749,6 +3772,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3832,6 +3858,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3918,6 +3947,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4115,6 +4147,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4319,6 +4354,9 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4416,6 +4454,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2120068486326459860, guid: a9af8a4348bed224082cf1fd27a846ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2719a4c81adc17a4ea940ba234ff3b9c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 2719a4c81adc17a4ea940ba234ff3b9c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -4559,6 +4598,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4629,11 +4671,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 2
+  m_Handedness: 0
   m_AttachTransform: {fileID: 731938100804501241}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -4653,18 +4693,6 @@ MonoBehaviour:
       m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
   m_PokeDepth: 0.1
   m_PokeWidth: 0.0075
   m_PokeSelectWidth: 0.015
@@ -4734,6 +4762,9 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4831,6 +4862,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2120068486326459860, guid: a9af8a4348bed224082cf1fd27a846ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2719a4c81adc17a4ea940ba234ff3b9c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 2719a4c81adc17a4ea940ba234ff3b9c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -5038,12 +5070,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &3027923644866595991
 GameObject:
   m_ObjectHideFlags: 0
@@ -5379,7 +5411,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -1636515391019944688, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ButtonPressPoint: 0.5
 --- !u!1 &4222046551969812902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5429,6 +5460,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5584,11 +5618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 2
+  m_Handedness: 0
   m_AttachTransform: {fileID: 9184522814859054423}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -5608,18 +5640,6 @@ MonoBehaviour:
       m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
   m_PokeDepth: 0.1
   m_PokeWidth: 0.0075
   m_PokeSelectWidth: 0.015
@@ -5932,7 +5952,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -5988,7 +6008,7 @@ MonoBehaviour:
   shieldBreak: {fileID: 831559569797793029}
   shieldCharge: {fileID: 3223800081638641270}
   locationSphere: {fileID: 4822023490925559613}
-  explosion: {fileID: 1845955007268882, guid: 6a36c3c8412827c4eb0b5aaa858d76d2, type: 3}
+  explosion: {fileID: 1121192042590650, guid: 5b40a208a13f33444a2d479eb174a3ee, type: 3}
   _missileReloadTime: 0
   _isShootingLaser: 0
   _steering: {x: 0, y: 0}
@@ -6056,6 +6076,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2120068486326459860, guid: a9af8a4348bed224082cf1fd27a846ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 00588d4dfa281704b85be8ab0fa078bb, type: 3}
+  m_Resource: {fileID: 8300000, guid: 00588d4dfa281704b85be8ab0fa078bb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 0.9
@@ -6493,12 +6514,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &6476845806817227350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,15 +6739,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -6940,15 +6963,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -7074,15 +7099,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -7222,12 +7249,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &7483492426377070908
 GameObject:
   m_ObjectHideFlags: 0
@@ -7661,6 +7688,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2120068486326459860, guid: a9af8a4348bed224082cf1fd27a846ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3532cdd0d03ef40a9960ec71c769f220, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3532cdd0d03ef40a9960ec71c769f220, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7757,6 +7785,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2120068486326459860, guid: a9af8a4348bed224082cf1fd27a846ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 020e132d9a927478f8187c97d90c8bcc, type: 3}
+  m_Resource: {fileID: 8300000, guid: 020e132d9a927478f8187c97d90c8bcc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7891,6 +7920,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8314,6 +8346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181187116972856295}
     m_Modifications:
+    - target: {fileID: 328865447132614869, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_PokeFilter
+      value: 
+      objectReference: {fileID: 3808511676149645818}
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_Size.x
       value: 0.74
@@ -8329,6 +8365,18 @@ PrefabInstance:
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000000062088175
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0033333427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000004967054
       objectReference: {fileID: 0}
     - target: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_LocalScale.x
@@ -8459,6 +8507,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+--- !u!114 &3808511676149645818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4185182053649342549, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+  m_PrefabInstance: {fileID: 1066875750630039983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f1a2a50d85cd4b9d6dad4c95622be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4290359752945112351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
@@ -8771,6 +8830,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2120068486326459860, guid: a9af8a4348bed224082cf1fd27a846ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
+  m_Resource: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
@@ -9316,6 +9376,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181187116972856295}
     m_Modifications:
+    - target: {fileID: 328865447132614869, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_PokeFilter
+      value: 
+      objectReference: {fileID: 689880889729894711}
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_Size.x
       value: 0.74
@@ -9331,6 +9395,18 @@ PrefabInstance:
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000000062088175
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0033333371
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000003228585
       objectReference: {fileID: 0}
     - target: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_LocalScale.x
@@ -9454,6 +9530,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
   m_PrefabInstance: {fileID: 3712712000476129634}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &689880889729894711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4185182053649342549, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+  m_PrefabInstance: {fileID: 3712712000476129634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f1a2a50d85cd4b9d6dad4c95622be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3954269339706667338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9557,6 +9644,9 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9765,6 +9855,9 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10032,6 +10125,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181187116972856295}
     m_Modifications:
+    - target: {fileID: 328865447132614869, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_PokeFilter
+      value: 
+      objectReference: {fileID: 8910432309740051825}
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_Size.x
       value: 0.79
@@ -10047,6 +10144,18 @@ PrefabInstance:
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000000062088175
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0033333153
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000000004967054
       objectReference: {fileID: 0}
     - target: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_LocalScale.x
@@ -10142,6 +10251,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
   m_PrefabInstance: {fileID: 4736931519835405604}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8910432309740051825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4185182053649342549, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+  m_PrefabInstance: {fileID: 4736931519835405604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f1a2a50d85cd4b9d6dad4c95622be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4948855535282685400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10402,6 +10522,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2120068486326459860, guid: a9af8a4348bed224082cf1fd27a846ec, type: 2}
   m_audioClip: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
+  m_Resource: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
@@ -10500,6 +10621,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181187116972856295}
     m_Modifications:
+    - target: {fileID: 328865447132614869, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_PokeFilter
+      value: 
+      objectReference: {fileID: 7120896069796913266}
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_Size.x
       value: 0.74
@@ -10515,6 +10640,18 @@ PrefabInstance:
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000000002483527
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0033333371
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000003228585
       objectReference: {fileID: 0}
     - target: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_LocalScale.x
@@ -10633,6 +10770,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+--- !u!114 &7120896069796913266 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4185182053649342549, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+  m_PrefabInstance: {fileID: 6396872716940705831}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f1a2a50d85cd4b9d6dad4c95622be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7890983268399887511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
@@ -10646,6 +10794,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181187116972856295}
     m_Modifications:
+    - target: {fileID: 328865447132614869, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_PokeFilter
+      value: 
+      objectReference: {fileID: 7493636733955837816}
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_Size.x
       value: 0.74
@@ -10661,6 +10813,18 @@ PrefabInstance:
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000000002483527
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0033333427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000004967054
       objectReference: {fileID: 0}
     - target: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_LocalScale.x
@@ -10802,6 +10966,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1fa98b378eca04c9841b245ced54e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7493636733955837816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4185182053649342549, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+  m_PrefabInstance: {fileID: 6767359994298527533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f1a2a50d85cd4b9d6dad4c95622be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7543063931053366173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
@@ -10815,6 +10990,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181187116972856295}
     m_Modifications:
+    - target: {fileID: 328865447132614869, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_PokeFilter
+      value: 
+      objectReference: {fileID: 6477214442034599290}
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_Size.x
       value: 0.74
@@ -10830,6 +11009,18 @@ PrefabInstance:
     - target: {fileID: 1501711052429502235, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000000002483527
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0033333153
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474099040023712912, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000000004967054
       objectReference: {fileID: 0}
     - target: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
       propertyPath: m_LocalScale.x
@@ -10964,6 +11155,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3838235257491240112, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
   m_PrefabInstance: {fileID: 7203350170939651375}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6477214442034599290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4185182053649342549, guid: 8f0f56ba5be52ae42b33e3836b7fe42c, type: 3}
+  m_PrefabInstance: {fileID: 7203350170939651375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115f1a2a50d85cd4b9d6dad4c95622be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7531347237898833175
 PrefabInstance:
   m_ObjectHideFlags: 0

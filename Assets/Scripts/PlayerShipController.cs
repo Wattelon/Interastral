@@ -7,6 +7,7 @@ public class PlayerShipController : BaseShipController
 {
     [SerializeField] private List<Material> crosshairMaterials;
     [SerializeField] private MeshRenderer crosshair;
+    
     private void Update()
     {
         crosshair.material = crosshairMaterials[_missileLockTimer <= 0 ? 1 : 0];
@@ -14,17 +15,17 @@ public class PlayerShipController : BaseShipController
 
     public void SetThrottle(XRJoystick throttleControl)
     {
-        _throttle = throttleControl.value.y + 1;
+        throttle = throttleControl.value.y + 1;
     }
 
     public void SetThrottleVertical()
     {
-        _isThrottleVertical = !_isThrottleVertical;
+        isThrottleVertical = !isThrottleVertical;
     }
 
     public void SetSteering(XRJoystick joystick)
     {
-        _steering = joystick.value;
+        steering = joystick.value;
     }
 
     public void TriggerShoot(bool toggle)

@@ -42,13 +42,13 @@ public class EnemyShipController : BaseShipController
                 }
 
                 var roll = Vector3.SignedAngle(Vector3.up, rollError, Vector3.forward);
-                _steering.x = Mathf.Clamp(roll, -1, 1);
+                steering.x = Mathf.Clamp(roll, -1, 1);
             }
 
             var pitch = Vector3.SignedAngle(Vector3.forward, pitchError, Vector3.right);
-            _steering.y = Mathf.Clamp(pitch, -1, 1);
+            steering.y = Mathf.Clamp(pitch, -1, 1);
 
-            _throttle = Mathf.Clamp(error.sqrMagnitude / 10000, 0, 2);
+            throttle = Mathf.Clamp(error.sqrMagnitude / 10000, 0, 2);
 
             if (missileCount > 0 && _missileLockTimer <= 0 && _missileReloadTimer <= 0)
             {
@@ -68,8 +68,8 @@ public class EnemyShipController : BaseShipController
             if (_target == target.transform)
             {
                 _target = _targets.Count > 0 ? _targets[0].transform : null;
-                _steering = Vector2.zero;
-                _throttle = 0;
+                steering = Vector2.zero;
+                throttle = 0;
                 Shoot(false);
             }
         }

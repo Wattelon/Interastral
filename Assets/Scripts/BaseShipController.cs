@@ -48,9 +48,9 @@ public class BaseShipController : MonoBehaviour
     private readonly List<Blaster> _blasters = new();
     private protected readonly List<Rigidbody> _targets = new();
     [SerializeField] private protected bool _isShootingLaser;
-    [SerializeField] private protected Vector2 _steering;
-    [SerializeField] private protected float _throttle;
-    [SerializeField] private protected bool _isThrottleVertical;
+    [SerializeField] private protected Vector2 steering;
+    [SerializeField] private protected float throttle;
+    [SerializeField] private protected bool isThrottleVertical;
     [SerializeField] private protected Equipment _equipment;
 
     private const float THROTTLE_MULTIPLIER = 1000000;
@@ -139,10 +139,10 @@ public class BaseShipController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var direction = _isThrottleVertical ? _transform.up : _transform.forward;
-        _rigidbody.AddForce(direction * (Mathf.Pow(_throttle, 2) * _throttlePower * THROTTLE_MULTIPLIER));
-        _rigidbody.AddTorque(_transform.forward * (-_steering.x * _steeringPower), ForceMode.Acceleration);
-        _rigidbody.AddTorque(_transform.right * (_steering.y * _steeringPower), ForceMode.Acceleration);
+        var direction = isThrottleVertical ? _transform.up : _transform.forward;
+        _rigidbody.AddForce(direction * (Mathf.Pow(throttle, 2) * _throttlePower), ForceMode.Acceleration);
+        _rigidbody.AddTorque(_transform.forward * (-steering.x * _steeringPower), ForceMode.Acceleration);
+        _rigidbody.AddTorque(_transform.right * (steering.y * _steeringPower), ForceMode.Acceleration);
 
         if (_isShootingLaser)
         {
@@ -177,8 +177,8 @@ public class BaseShipController : MonoBehaviour
         
         UpdateMissileLock();
         
-        _audioEngines.volume = _throttle / 2;
-        _audioEngines.pitch = 0.9f + _throttle / 10;
+        _audioEngines.volume = throttle / 2;
+        _audioEngines.pitch = 0.9f + throttle / 10;
         _missileReloadTimer -= Time.fixedDeltaTime;
     }
 
